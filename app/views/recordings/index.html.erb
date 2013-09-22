@@ -1,0 +1,28 @@
+<!-- <h2>Recordings containing samples</h2> -->
+<h1>Recordings</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Artist</th>
+    <th>Release</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @recordings.each do |recording| %>
+  <tr>
+    <td><%= link_to recording.name, recording_path(recording) %></td>
+    <td><%= recording.artist ? (link_to recording.artist.name, artist_path(recording.artist)) : '' %></td>
+    <td><%= link_to recording.release.name, release_path(recording.release) %></td>
+    <td><%= link_to 'Show', recording %></td>
+    <td><%= link_to 'Edit', edit_recording_path(recording) %></td>
+    <td><%= link_to 'Destroy', recording, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Recording', new_recording_path %>

@@ -1,0 +1,80 @@
+<h3>Artists (and their known samples)</h3>
+
+<div class="artists">
+  <%# sort_link @search, :name, "Name" %>
+<!--<table>
+  <tr>
+    <th><%# sort_link @search, :name, "Name" %></th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+  <%# Kaminari -%>
+  <%# paginate(@artists) %>
+
+  <%# will_paginate -%>
+
+  <%# debugger %>
+-->
+
+  <%= @artists.length == 0 ? "No results found." : "" %>
+
+  <% @artists.each do |artist| -%>
+
+    <div><span class="radius secondary label"><%= artist.name %></span></div>
+    <% if artist.recordings.length == 0 -%>
+      <br />
+    <% else -%>
+      <table>
+        <thead>
+          <tr>
+            <th>Track name</th>
+            <th>Sample dialogue</th>
+            <th>Sample source</th>
+            <th>Album</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% artist.recordings.each do |recording| -%>
+          <tr>
+            <% sample = Sample.find_by_recording_id(recording.id) -%>
+            <td><%= recording.name %></td>
+            <td><i><%= sample.transcript %></i></td>
+            <td><%= sample.sample_source.try(:title) %></td>
+            <td><%= recording.release.try(:name) %></td>
+          </tr>
+        <% end -%>
+        </tbody>
+      </table>
+    <% end -%>
+  <% end -%>
+</div>
+
+<%# Don't insert pagination HTML if we don't need to -%>
+<% if (@artists.total_pages > 1) -%>
+  <hr />
+  <%# the pagination bar lives in its own foundation row: -%>
+  <div class="row">
+    <div class="small-12 columns">
+<%# debugger %>
+      <%= will_paginate(@artists, :class => "digg_pagination") -%>
+    </div>
+  </div>
+<% end -%>
+
+<%#= link_to 'New Artist', new_artist_path, class: "button radius" %>
+
+<hr />
+<div class="row">
+  <div class="small-6 columns">
+  <%= search_form_for @search do |f| -%>
+    <div class="field">
+      <%= f.label :name_cont, "Search artists by name:" %>
+      <%= f.text_field :name_cont %>
+    </div>
+    <div class="actions"><%= f.submit "Search", class: "small button" %></div>
+  <% end -%>
+  </div>
+</div>
+

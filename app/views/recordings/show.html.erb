@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @recording.name %>
+</p>
+
+<p>
+  <b>Artist:</b>
+  <%= @recording.artist.name %>
+</p>
+
+<p>
+  <b>Release:</b>
+  <%= @recording.release.name %>
+</p>
+
+
+<%= link_to 'Edit', edit_recording_path(@recording) %> |
+<%= link_to 'Back', recordings_path %>

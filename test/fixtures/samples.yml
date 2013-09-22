@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  transcript: MyString
+  sample_source: 
+  recording: 
+
+two:
+  transcript: MyString
+  sample_source: 
+  recording: 

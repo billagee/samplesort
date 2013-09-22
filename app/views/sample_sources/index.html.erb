@@ -1,0 +1,62 @@
+<h3>Sample sources</h3>
+
+<div>
+
+  <%= @sample_sources.length == 0 ? "No results found." : "" %>
+
+  <% @sample_sources.each do |sample_source| -%>
+
+    <div><span class="radius secondary label"><%= sample_source.title %></span></div>
+    <% if sample_source.samples.length == 0 -%>
+      <br />
+    <% else -%>
+      <table>
+        <thead>
+          <tr>
+            <th>Sample dialogue</th>
+            <th>Artist</th>
+            <th>Track name</th>
+            <th>Album</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% sample_source.samples.each do |sample| -%>
+          <tr>
+            <% recording = sample.recording -%>
+            <td><i><%= sample.transcript %></i></td>
+            <td><%= recording.artist.name %></td>
+            <td><%= recording.name %></td>
+            <td><%= recording.release.name %></td>
+          </tr>
+        <% end -%>
+        </tbody>
+      </table>
+    <% end -%>
+  <% end -%>
+
+</div>
+
+<%# Don't insert pagination HTML if we don't need to -%>
+<% if (@sample_sources.total_pages > 1) -%>
+  <hr />
+  <%# the pagination bar lives in its own foundation row: -%>
+  <div class="row">
+    <div class="small-12 columns">
+      <%= will_paginate(@sample_sources, :class => "digg_pagination") -%>
+    </div>
+  </div>
+<% end -%>
+
+<hr />
+<div class="row">
+  <div class="small-6 columns">
+  <%= search_form_for @search do |f| -%>
+    <div class="field">
+      <%= f.label :title_cont, "Search sample sources by title:" %>
+      <%= f.text_field :title_cont %>
+    </div>
+    <div class="actions"><%= f.submit "Search", class: "small button" %></div>
+  <% end -%>
+  </div>
+</div>
+

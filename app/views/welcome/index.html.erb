@@ -1,0 +1,159 @@
+<!--
+<h1>This is samplesort.</h1>
+<h4>Search for vocal samples and their sources:</h4>
+-->
+<h3>Search for vocal samples and their sources:</h3>
+
+<!--
+<dl>
+  <dt>Sample</dt>
+  <dd>"Even a stopped clock tells the right time twice a day."</dd>
+  <dt>Sample Source</dt>
+  <dd>Withnail and I</dd>
+  <dt>Artist</dt>
+  <dd>Orbital</dd>
+  <dt>Track</dt>
+  <dd>Planet of the Shapes</dd>
+</dl>
+
+  <%# FIXME: Make these links to the actual DB records: -%>
+  <div>Sample: "Even a stopped clock tells the right time twice a day."</div>
+  <div>Artist: Orbital</div>
+  <div>Track: Planet of the Shapes</div>
+  <div>Sample source: Withnail and I</div>
+  <br />
+-->
+
+<!--<h3>Get information about vocal samples in music:</h3> -->
+<!-- <h3>Discover vocal samples in music:</h3> -->
+<!-- <h2>A resource for music lovers.</h3> --> <!-- a music lover's friend/companion. -->
+
+
+<div class="section-container auto" data-section>
+  <section>
+    <p class="title" data-section-title><a href="#panel1">By Artist or Song Name</a></p>
+    <div class="content" data-section-content>
+        <%= search_form_for @artist_search do |f| %>
+          <div class="field">
+            <%= f.label :name_cont, "Artist name contains:" %>
+            <%= f.text_field :name_cont, :placeholder => 'Orbital' %>
+          </div>
+          <div class="field">
+            <%= f.label :recordings_name_cont, "Song name contains:" %>
+            <%= f.text_field :recordings_name_cont, :placeholder => "I don't know you people" %>
+          </div>
+
+          <div class="actions"><%= f.submit "Search", class: "small button" %></div>
+          <h6 class="subheader">Provide at least one input value.</h6>
+        <% end %>
+    </div>
+  </section>
+
+  <section>
+    <p class="title" data-section-title><a href="#panel2">By Sample Dialogue or Source</a></p>
+    <div class="content" data-section-content>
+      <%= search_form_for @sample_source_search do |f| %>
+        <div class="field">
+          <%= f.label :sample_source_cont, "Sample source title contains:" %>
+          <%= f.text_field :title_cont, :placeholder => 'Withnail and I' %>
+        </div>
+          <div class="field">
+            <%= f.label :samples_transcript_cont, "Sampled dialogue:" %>
+            <%= f.text_field :samples_transcript_cont, :placeholder => "Even a stopped clock tells the right time twice a day." %>
+          </div>
+
+        <div class="actions"><%= f.submit "Search", class: "small button" %></div>
+        <h6 class="subheader">Provide at least one input value.</h6>
+      <% end %>
+    </div>
+  </section>
+</div>
+
+<!--
+<div class="row">
+  <div class="large-6 columns <%# panel %>">
+    <%= search_form_for @sample_search do |f| %>
+      <div class="field">
+        <%= f.label :sample_cont, "Dialogue from sample" %>
+        <%= f.text_field :name_cont, :value => 'Even a stopped clock tells the right time twice a day.' %>
+      </div>
+      <div class="actions"><%= f.submit "Search" %></div>
+    <% end %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-6 columns <%# panel %>">
+    <%= search_form_for @sample_source_search do |f| %>
+      <div class="field">
+        <%= f.label :sample_source_cont, "Title of sample source" %>
+        <%= f.text_field :title_cont, :value => 'Withnail and I' %>
+      </div>
+      <div class="actions"><%= f.submit "Search" %></div>
+    <% end %>
+  </div>
+</div>
+-->
+
+
+<!--<h4>Search by any of:</h4> -->
+<!--
+<div class="row">
+  <div class="large-6 columns <%# panel %>">
+    <%# <h6>Artist</h6> -%>
+    <%= search_form_for @artist_search do |f| %>
+      <div class="field">
+        <%= f.label :name_cont, "Artist name" %>
+        <%= f.text_field :name_cont, :value => 'Orbital' %>
+      </div>
+      <div class="actions"><%= f.submit "Search" %></div>
+    <% end %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-6 columns <%# panel %>">
+    <%= search_form_for @sample_search do |f| %>
+      <div class="field">
+        <%= f.label :sample_cont, "Dialogue from sample" %>
+        <%= f.text_field :name_cont, :value => 'Even a stopped clock tells the right time twice a day.' %>
+      </div>
+      <div class="actions"><%= f.submit "Search" %></div>
+    <% end %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-6 columns <%# panel %>">
+    <%= search_form_for @sample_source_search do |f| %>
+      <div class="field">
+        <%= f.label :sample_source_cont, "Title of sample source" %>
+        <%= f.text_field :title_cont, :value => 'Withnail and I' %>
+      </div>
+      <div class="actions"><%= f.submit "Search" %></div>
+    <% end %>
+  </div>
+</div>
+-->
+
+<!--<h3>Search by any of:</h3> -->
+<!--
+<div class="row">
+  <div class="large-6 columns <%# panel %>">
+    <ul>
+      <li>See <%= link_to "a list of vocal samples in music.", samples_path %></li>
+      <li>See <%= link_to "a list of sample sources.", sample_sources_path %></li>
+      <li>See <%= link_to "statistics about the above." %>
+      <ul>
+        <li>The most sampled actors.</li>
+        <li>The most sampled actresses.</li>
+        <li>The most sampled real-life figures.</li>
+        <li>List sample-using music by release year.</li>
+      </ul></li>
+    </ul>
+    </div>
+  </div>
+</div>
+<br />
+-->
+

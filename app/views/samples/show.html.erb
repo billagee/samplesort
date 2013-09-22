@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Transcript:</b>
+  <%= @sample.transcript %>
+</p>
+
+<p>
+  <b>Sample source:</b>
+  <%= @sample.sample_source %>
+</p>
+
+<p>
+  <b>Recording:</b>
+  <%= @sample.recording %>
+</p>
+
+
+<%= link_to 'Edit', edit_sample_path(@sample) %> |
+<%= link_to 'Back', samples_path %>

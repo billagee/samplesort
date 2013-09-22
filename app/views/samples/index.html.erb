@@ -1,0 +1,39 @@
+<h1>Samples</h1>
+
+<table>
+  <tr>
+    <th>Transcript</th>
+    <th>Sample source</th>
+    <th>Recording</th>
+    <th>Artist</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @samples.each do |sample| %>
+  <tr>
+<!--    <td><%= sample.transcript %></td>-->
+    <td><%= link_to sample.transcript, sample_path(sample) %></td>
+    <td><%= link_to sample.sample_source.title, sample_source_path(sample.sample_source_id) %></td>
+    <td>
+    <% if sample.recording -%>
+      <%= link_to sample.recording.name, recording_path(sample.recording_id) %>
+    <% end -%>
+    </td>
+    <td>
+    <% if (sample.recording and sample.recording.artist) -%>
+      <%= link_to sample.recording.artist.name, artist_path(sample.recording.artist_id) %>
+    <% end -%>
+    </td>
+
+    <td><%= link_to 'Show', sample %></td>
+    <td><%= link_to 'Edit', edit_sample_path(sample) %></td>
+    <td><%= link_to 'Destroy', sample, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Sample', new_sample_path %>
